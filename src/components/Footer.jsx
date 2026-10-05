@@ -20,6 +20,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             <li><Link className="text-cream/80 hover:text-accent" to="/">Home</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/services">All services</Link></li>
+            <li><Link className="text-cream/80 hover:text-accent" to="/case-studies">Case studies</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/pricing">Pricing packages</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/contact">Contact</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/consultation">Book a free consultation</Link></li>

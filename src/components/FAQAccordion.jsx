@@ -1,6 +1,23 @@
 import { useId, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
-import { Container, Eyebrow } from './ui';
+import { Container, Dot, Eyebrow } from './ui';
+
+/* An answer is plain text. A line starting with "● " is shown as a bullet. */
+const Answer = ({ text, dark }) => {
+  const lines = text.split('\n');
+  const bullets = lines.filter((l) => l.startsWith('● '));
+  const prose = lines.filter((l) => !l.startsWith('● '));
+  return (
+    <div className={`px-5 pb-5 text-[15px] leading-relaxed ${dark ? 'text-cream/75' : 'text-ink/75'}`}>
+      {prose.map((p) => <p key={p}>{p}</p>)}
+      {bullets.length > 0 && (
+        <ul className="space-y-2">
+          {bullets.map((b) => <li key={b} className="flex items-start gap-3"><Dot className="mt-2 text-ink" />{b.slice(2)}</li>)}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 /* Questions split into two independent columns of cards (one column on mobile),
    so opening an answer only pushes down its own column. */
@@ -17,16 +34,16 @@ export function FAQAccordion({ items, dark }) {
             const i = c ? half + j : j;
             const isOpen = open === i;
             return (
-              <div key={q} className={`rounded-2xl border transition ${dark ? 'border-cream/20 bg-white/5' : 'bg-white/70'} ${isOpen ? (dark ? 'border-accent' : 'border-ink') : dark ? '' : 'border-ink/15'}`}>
+              <div key={q} className={`rounded-2xl border transition ${dark ? 'border-cream/20 bg-white/5' : 'bg-cream'} ${isOpen ? (dark ? 'border-sand' : 'border-ink') : dark ? '' : 'border-ink/15'}`}>
                 <h3 className="font-sans">
                   <button type="button" aria-expanded={isOpen} aria-controls={`${uid}-${i}`} onClick={() => setOpen(isOpen ? -1 : i)}
                     className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-display text-base font-bold leading-snug">
                     {q}
-                    <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-transform duration-300 ${isOpen ? 'rotate-45 bg-accent text-ink' : 'bg-ink/10'}`}><FiPlus aria-hidden /></span>
+                    <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full transition-transform duration-300 ${isOpen ? 'rotate-45 bg-sand text-ink' : 'bg-sand/60'}`}><FiPlus aria-hidden /></span>
                   </button>
                 </h3>
                 <div id={`${uid}-${i}`} role="region" className={`grid transition-[grid-template-rows] duration-300 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
-                  <div className="overflow-hidden"><p className={`px-5 pb-5 text-[15px] leading-relaxed ${dark ? 'text-cream/75' : 'text-ink/75'}`}>{a}</p></div>
+                  <div className="overflow-hidden"><Answer text={a} dark={dark} /></div>
                 </div>
               </div>
             );
@@ -39,7 +56,7 @@ export function FAQAccordion({ items, dark }) {
 
 /* Centered heading, questions underneath. */
 export const FAQSection = ({ items, dark, tone }) => (
-  <section id="faqs" aria-labelledby="faq-h" className={`${dark ? 'bg-ink text-cream' : tone === 'sand' ? 'bg-cream-sand text-ink' : 'bg-cream text-ink'} py-14 sm:py-16 lg:py-20`}>
+  <section id="faqs" aria-labelledby="faq-h" className={`${dark ? 'bg-ink text-cream' : tone === 'sand' ? 'bg-sand/25 text-ink' : 'bg-cream text-ink'} py-14 sm:py-16 lg:py-20`}>
     <Container>
       <header className="mx-auto mb-10 max-w-2xl text-center">
         <Eyebrow dark={dark}>FAQS</Eyebrow>

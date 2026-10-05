@@ -11,7 +11,7 @@ const Tiers = ({ name, tiers }) => (
     <table className="w-full text-sm">
       <caption className="sr-only">{name} pricing by number of tools connected</caption>
       <thead className="bg-ink text-cream"><tr><th scope="col" className="px-4 py-2 text-left font-medium">Tools connected</th><th scope="col" className="px-4 py-2 text-right font-medium">Price</th></tr></thead>
-      <tbody className="divide-y divide-ink/10 bg-white/60">
+      <tbody className="divide-y divide-ink/10 bg-cream">
         {tiers.map(([t, p]) => <tr key={t}><th scope="row" className="px-4 py-2.5 text-left font-normal">{t}</th><td className="px-4 py-2.5 text-right font-display font-bold">{p}</td></tr>)}
       </tbody>
     </table>
@@ -42,7 +42,7 @@ export default function PackageGrid() {
             {p.tiers && <Tiers name={p.name} tiers={p.tiers} />}
             <h4 className="mt-6 font-display text-base font-bold">Includes</h4>
             <ul className="mt-3 space-y-2">
-              {p.includes.map((x) => <li key={x} className="flex items-start gap-2 text-[15px] text-ink/85"><FiCheck className="mt-1 shrink-0 text-accent" aria-hidden />{x}</li>)}
+              {p.includes.map((x) => <li key={x} className="flex items-start gap-2 text-[15px] text-ink/85"><FiCheck className="mt-1 shrink-0 text-ink" aria-hidden />{x}</li>)}
             </ul>
             <div className="mt-6 rounded-2xl bg-ink p-5 text-cream">
               <h4 className="font-display text-sm font-bold text-accent">You get</h4>

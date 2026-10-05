@@ -1,7 +1,7 @@
 import { FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
 import { SITE } from '../data';
 
-const box = 'w-full rounded-xl border border-ink/20 bg-white px-4 py-3 text-[15px] outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-accent/60';
+const box = 'w-full rounded-xl border border-ink/20 bg-cream px-4 py-3 text-[15px] outline-none transition placeholder:text-ink/40 focus:border-ink focus:ring-2 focus:ring-ink/20';
 
 export const TextField = ({ label, name, type = 'text', required, placeholder, autoComplete }) => (
   <label className="block">
@@ -25,7 +25,7 @@ export const ChipGroup = ({ legend, name, options, type = 'checkbox' }) => (
       {options.map((o) => (
         <label key={o} className="cursor-pointer">
           <input type={type} name={name} value={o} className="peer sr-only" />
-          <span className="inline-block rounded-full border border-ink/25 bg-white/70 px-4 py-2 text-sm transition hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">{o}</span>
+          <span className="inline-block rounded-full border border-ink/25 bg-cream px-4 py-2 text-sm transition hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">{o}</span>
         </label>
       ))}
     </div>
@@ -40,7 +40,7 @@ export const CardGroup = ({ legend, name, options }) => (
       {options.map((o) => (
         <label key={o} className="cursor-pointer">
           <input type="radio" name={name} value={o} className="peer sr-only" />
-          <span className="flex min-h-[56px] items-center justify-between gap-3 rounded-2xl border border-ink/20 bg-white/70 px-4 py-3 text-[15px] font-medium transition hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">
+          <span className="flex min-h-[56px] items-center justify-between gap-3 rounded-2xl border border-ink/20 bg-cream px-4 py-3 text-[15px] font-medium transition hover:border-ink peer-checked:border-ink peer-checked:bg-ink peer-checked:text-cream peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink">
             {o}
             <span className="h-4 w-4 shrink-0 rounded-full border-2 border-current opacity-50" aria-hidden />
           </span>

@@ -16,7 +16,7 @@ export default function ContactForm() {
         </div>
         <TextField label="Subject / Reason for Contact" name="subject" required />
         <TextArea label="Message" name="message" required />
-        <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-ink transition hover:brightness-105 disabled:opacity-60">
+        <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition hover:bg-ink-soft disabled:opacity-60">
           {status === 'sending' ? 'Sending…' : 'Send Message'} <FiArrowRight aria-hidden />
         </button>
         <FormStatus status={status} successText="Thank you. Your message has been sent." />

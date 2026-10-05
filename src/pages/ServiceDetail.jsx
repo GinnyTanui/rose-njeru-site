@@ -4,6 +4,7 @@ import FinalCTA from '../components/FinalCTA';
 import { Seo, breadcrumbLd, faqLd, providerRef } from '../components/Seo';
 import ServiceHero from '../sections/service/ServiceHero';
 import { ServiceOutcome, ServiceOverview } from '../sections/service/ServiceBlocks';
+import ProofInProduction from '../sections/service/ProofInProduction';
 import RelatedServices from '../sections/service/RelatedServices';
 import NotFound from './NotFound';
 import { SITE, services } from '../data';
@@ -43,6 +44,7 @@ export default function ServiceDetail() {
         <ServiceHero s={s} />
         <ServiceOverview s={s} />
         <ServiceOutcome s={s} />
+        <ProofInProduction s={s} />
         <FAQSection items={s.faqs} />
         <RelatedServices current={s.slug} />
         <FinalCTA

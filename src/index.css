@@ -6,12 +6,13 @@
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
   body { @apply bg-cream font-sans text-[15px] leading-relaxed text-ink antialiased sm:text-base; }
   h1, h2, h3 { @apply font-display font-extrabold tracking-tight; text-wrap: balance; }
-  :focus-visible { @apply outline outline-2 outline-offset-2 outline-accent; }
+  /* Stone ring with a navy halo: visible on both the off-white and the navy sections. */
+  :focus-visible { outline: 2px solid #D6CEC2; outline-offset: 2px; box-shadow: 0 0 0 5px #0F172A; }
 }
 @layer utilities {
   .bg-grid {
-    background-image: linear-gradient(rgba(241,238,230,.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(241,238,230,.06) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(248,250,252,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(248,250,252,.06) 1px, transparent 1px);
     background-size: 36px 36px;
   }
 }

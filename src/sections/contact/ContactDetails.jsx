@@ -4,7 +4,7 @@ import { SITE } from '../../data';
 
 const Row = ({ icon: I, label, href, children }) => (
   <li>
-    <a href={href} className="group flex items-center gap-4 rounded-2xl border border-ink/15 bg-white/60 p-4 transition hover:border-ink">
+    <a href={href} className="group flex items-center gap-4 rounded-2xl border border-ink/15 bg-cream p-4 transition hover:border-ink">
       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-lg text-accent"><I aria-hidden /></span>
       <span><span className="block text-xs text-ink/55">{label}</span><span className="break-all font-medium">{children}</span></span>
     </a>
@@ -19,7 +19,7 @@ export default function ContactDetails() {
         <Row icon={FiMail} label="Email" href={`mailto:${SITE.email}`}>{SITE.email}</Row>
         {SITE.phone && <Row icon={FiPhone} label="Phone" href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</Row>}
         {SITE.location && (
-          <li className="flex items-center gap-4 rounded-2xl border border-ink/15 bg-white/60 p-4">
+          <li className="flex items-center gap-4 rounded-2xl border border-ink/15 bg-cream p-4">
             <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-lg text-accent"><FiMapPin aria-hidden /></span>
             <span><span className="block text-xs text-ink/55">Location / service area</span><span className="font-medium">{SITE.location}</span></span>
           </li>

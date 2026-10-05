@@ -13,7 +13,7 @@ export default function RelatedServices({ current }) {
             <span className="font-mono text-xs text-ink/55 group-hover:text-accent">Service {s.no}</span>
             <h3 className="mt-3 text-lg">{s.name}</h3>
             <p className="mt-2 text-[15px] leading-relaxed text-ink/75 group-hover:text-cream/80">{s.short}</p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">Explore {s.name} <FiArrowRight aria-hidden className="text-accent transition group-hover:translate-x-1" /></span>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold">Explore {s.name} <FiArrowRight aria-hidden className="text-ink transition group-hover:translate-x-1 group-hover:text-accent" /></span>
           </Link>
         ))}
       </div>

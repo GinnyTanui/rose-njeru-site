@@ -27,7 +27,7 @@ export default function ConsultationForm() {
         <TextArea label="Tell us a little more (optional)" name="details" placeholder="Briefly describe what you're currently doing and what you'd like to improve." />
         <ChipGroup legend="What would you like the improved process to achieve?" name="achieve" options={ACHIEVE} />
         <div className="space-y-4">
-          <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-ink transition hover:brightness-105 disabled:opacity-60">
+          <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-ink px-6 py-2.5 text-sm font-semibold text-cream transition hover:bg-ink-soft disabled:opacity-60">
             {status === 'sending' ? 'Sending…' : 'Request Free Consultation'} <FiArrowRight aria-hidden />
           </button>
           <FormStatus status={status} successText="Thank you. Your request has been sent, and we'll be in touch to arrange your free consultation." />

@@ -43,7 +43,7 @@ export function HeroBackground({ density = 1 }) {
           const a = nodes[i], b = nodes[j], d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < LINK) {
             const near = Math.hypot((a.x + b.x) / 2 - mouse.x, (a.y + b.y) / 2 - mouse.y) < 160;
-            ctx.strokeStyle = near ? `rgba(242,169,59,${(1 - d / LINK) * 0.55})` : `rgba(241,238,230,${(1 - d / LINK) * 0.2})`;
+            ctx.strokeStyle = near ? `rgba(214,206,194,${(1 - d / LINK) * 0.6})` : `rgba(248,250,252,${(1 - d / LINK) * 0.2})`;
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           }
@@ -58,11 +58,11 @@ export function HeroBackground({ density = 1 }) {
       pulses = pulses.filter((p) => (p.t += 0.018) < 1);
       for (const p of pulses) {
         const x = p.a.x + (p.b.x - p.a.x) * p.t, y = p.a.y + (p.b.y - p.a.y) * p.t;
-        ctx.fillStyle = 'rgba(242,169,59,.25)'; ctx.beginPath(); ctx.arc(x, y, 7, 0, 7); ctx.fill();
-        ctx.fillStyle = '#F2A93B'; ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 7); ctx.fill();
+        ctx.fillStyle = 'rgba(214,206,194,.18)'; ctx.beginPath(); ctx.arc(x, y, 6, 0, 7); ctx.fill();
+        ctx.fillStyle = '#D6CEC2'; ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fill();
       }
       for (const p of nodes) {
-        ctx.fillStyle = p.hot ? '#F2A93B' : 'rgba(241,238,230,.65)';
+        ctx.fillStyle = p.hot ? '#D6CEC2' : 'rgba(248,250,252,.65)';
         ctx.beginPath(); ctx.arc(p.x, p.y, p.hot ? p.r + 0.8 : p.r, 0, 7); ctx.fill();
       }
       if (reduce) cancelAnimationFrame(raf);

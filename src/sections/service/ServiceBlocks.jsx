@@ -15,10 +15,10 @@ export const ServiceOverview = ({ s }) => (
       <div>
         <h2 id="inc-h" className="text-2xl leading-tight sm:text-3xl">{s.includesTitle}</h2>
         {s.includesIntro && <p className="mt-3 text-[15px] leading-relaxed text-ink/75">{s.includesIntro}</p>}
-        <ol className="mt-5 divide-y divide-ink/10 overflow-hidden rounded-3xl border border-ink/15 bg-white/60">
+        <ol className="mt-5 divide-y divide-ink/10 overflow-hidden rounded-3xl border border-ink/15 bg-cream">
           {s.includes.map(([t, d], i) => (
             <li key={t} className="flex gap-4 px-5 py-4">
-              <span className="pt-0.5 font-mono text-xs text-ink/45">{String(i + 1).padStart(2, '0')}</span>
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sand font-mono text-xs text-ink">{i + 1}</span>
               <div>
                 <h3 className="text-base">{t}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-ink/70">{d}</p>
@@ -53,7 +53,7 @@ export const ServiceOutcome = ({ s }) => (
         <p className="mt-3 font-display text-lg font-bold leading-snug">{s.who.intro}</p>
         {s.who.items.length > 0 && (
           <ul className="mt-5 space-y-2.5">
-            {s.who.items.map((i) => <li key={i} className="flex items-start gap-3 text-[15px] text-ink/85"><FiCheck className="mt-1 shrink-0 text-accent" aria-hidden />{i}</li>)}
+            {s.who.items.map((i) => <li key={i} className="flex items-start gap-3 text-[15px] text-ink/85"><FiCheck className="mt-1 shrink-0 text-ink" aria-hidden />{i}</li>)}
           </ul>
         )}
         <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
