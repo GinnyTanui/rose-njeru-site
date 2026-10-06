@@ -7,7 +7,7 @@ const icons = [
   [FiEdit3, FiShare2, FiBarChart2, FiSearch],
 ];
 
-/* Replaces the old "Make the Processes Behind Your Business…" section. Customers on navy, the team on warm stone. */
+
 export default function Help() {
   return (
     <Section tone="sand" labelledBy="help-h">

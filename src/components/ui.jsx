@@ -26,17 +26,13 @@ export const SectionHeading = ({ id, eyebrow, title, children, dark, className =
   </header>
 );
 
-/* Small round bullet used instead of ticks. Takes its colour from the text colour (set text-* on it). */
+
 export const Dot = ({ className = '' }) => <span className={`inline-block h-2 w-2 shrink-0 rounded-full bg-current ${className}`} aria-hidden="true" />;
 
-/* Warm-stone pill for small labels (service number, "Case study", etc). */
 export const Badge = ({ children, className = '' }) => (
   <span className={`inline-flex items-center rounded-full bg-sand px-3 py-1 font-mono text-xs font-medium text-ink ${className}`}>{children}</span>
 );
 
-/* One button style everywhere. Pass `dark` when the button sits on a navy background.
-   primary: navy on light sections, warm stone on navy.  secondary: outline in the same colours.
-   With no `to`/`href` it goes to the consultation page (the primary CTA). */
 export const Button = ({ to, href, variant = 'primary', arrow = true, dark, children, className = '' }) => {
   const base = 'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition hover:-translate-y-0.5';
   const look = variant === 'primary'
@@ -45,7 +41,8 @@ export const Button = ({ to, href, variant = 'primary', arrow = true, dark, chil
   const inner = <>{children}{arrow && <FiArrowRight aria-hidden />}</>;
   const cls = `${base} ${look} ${className}`;
   const dest = !to && !href ? CTA_PATH : to;
-  return dest ? <Link to={dest} className={cls}>{inner}</Link> : <a href={href} className={cls}>{inner}</a>;
+  const external = /^https?:\/\//.test(href || '');
+  return dest ? <Link to={dest} className={cls}>{inner}</Link> : <a href={href} className={cls} {...(external && { target: '_blank', rel: 'noopener noreferrer' })}>{inner}</a>;
 };
 
 export const TextLink = ({ to, children, dark }) => (

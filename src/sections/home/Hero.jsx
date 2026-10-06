@@ -11,7 +11,7 @@ export default function Hero() {
     <section aria-labelledby="hero-h" className="relative overflow-hidden text-cream">
       <HeroBackground />
       <Container className="relative py-12 sm:py-16 lg:py-20">
-        <h1 id="hero-h" className="mb-8 font-mono text-xs font-normal tracking-[0.14em] text-cream/60 sm:mb-10">
+      <h1 id="hero-h" className="mb-8 font-display text-base font-bold  text-sand sm:mb-10 sm:text-lg lg:text-xl">
           AI AUTOMATION &amp; BUSINESS SYSTEMS SPECIALIST
         </h1>
         <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">

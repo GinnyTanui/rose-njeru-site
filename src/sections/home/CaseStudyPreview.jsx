@@ -3,7 +3,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { Badge, Section, SectionHeading, TextLink } from '../../components/ui';
 import { caseStudies } from '../../content';
 
-/* Home teaser: the four case studies, each linking to its full write-up. */
+
 export default function CaseStudyPreview() {
   return (
     <Section tone="dark" labelledBy="cases-h">

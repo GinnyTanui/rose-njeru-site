@@ -2,14 +2,17 @@ import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi';
 import { FaLinkedinIn } from 'react-icons/fa';
 import { SITE } from '../../data';
 
-const Row = ({ icon: I, label, href, children }) => (
-  <li>
-    <a href={href} className="group flex items-center gap-4 rounded-2xl border border-ink/15 bg-cream p-4 transition hover:border-ink">
-      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-lg text-accent"><I aria-hidden /></span>
-      <span><span className="block text-xs text-ink/55">{label}</span><span className="break-all font-medium">{children}</span></span>
-    </a>
-  </li>
-);
+const Row = ({ icon: I, label, href, children }) => {
+  const external = /^https?:\/\//.test(href);
+  return (
+    <li>
+      <a href={href} {...(external && { target: '_blank', rel: 'noopener noreferrer' })} className="group flex items-center gap-4 rounded-2xl border border-ink/15 bg-cream p-4 transition hover:border-ink">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-lg text-accent"><I aria-hidden /></span>
+        <span><span className="block text-xs text-ink/55">{label}</span><span className="break-all font-medium">{children}</span></span>
+      </a>
+    </li>
+  );
+};
 
 export default function ContactDetails() {
   return (

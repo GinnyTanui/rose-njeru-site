@@ -1,7 +1,4 @@
-// New website content, taken word-for-word from the client document (Website_Content.pdf).
-// data.js is untouched: services, pricing and the service-page copy still live there.
 
-/* ---------- Introduction (hero) ---------- */
 export const intro = {
   scenarios: [
     "A lead messages you at 9pm and hears back the next afternoon.",
@@ -13,7 +10,7 @@ export const intro = {
   body: "I find where they're happening and fix them with the simplest tool that works: an automation, a connection between your tools, or an AI assistant",
 };
 
-/* ---------- Problem section ---------- */
+
 export const problem = {
   title: "Where does your business leak?",
   text: "It's rarely one big problem. It's small gaps at every stage, from the first inquiry to the final payment, and in all the work your team does that customers never see.",
@@ -41,7 +38,7 @@ export const problem = {
   closingRest: "Most of them are easy to miss, because everyone has learned to work around them.",
 };
 
-/* ---------- What we help with ---------- */
+
 export const help = {
   eyebrow: "What we help with",
   title: "Fix the gaps at every stage, with your customers and inside your business",
@@ -68,7 +65,7 @@ export const help = {
   ],
 };
 
-/* ---------- Case studies (one per service, keyed by service slug) ---------- */
+
 export const caseStudies = [
   {
     slug: "business-audit",
@@ -140,7 +137,7 @@ export const caseStudies = [
   },
 ];
 
-/* ---------- Our Process ---------- */
+
 export const process = {
   eyebrow: "Our Process",
   title: "How we work together, in four steps",
@@ -177,7 +174,7 @@ export const process = {
   ],
 };
 
-/* ---------- Tools We Use ---------- */
+
 export const toolsSection = {
   title: "Tools We Use",
   heading: "We work with the tools you already have, and add new ones only when needed",
@@ -219,7 +216,7 @@ export const toolsSection = {
   },
 };
 
-/* ---------- Why Work With Me ---------- */
+
 export const whyTitle = "Why Work With Me";
 export const why = [
   ["I look at your whole business.", "I look at how customers move through it, and at the work your team does behind the scenes. Most people only look at one."],
@@ -229,7 +226,7 @@ export const why = [
   ["We check that it worked.", "Before we start, we agree on the numbers to track. After launch, we measure again."],
 ];
 
-/* ---------- Homepage FAQs (a "●" line renders as a bullet) ---------- */
+
 export const homeFaqs = [
   ["What can you actually do for my business?", "I fix the slow, manual parts of how your business runs. That includes how customers get answered, booked, and paid, and how your team handles work behind the scenes, like handoffs, records, and reports."],
   ["How do I know what to automate?", "You don't need to know. I look at your business and show you the problems costing you the most time or money. Then I tell you which ones are worth fixing and which ones should stay as they are."],
@@ -246,3 +243,26 @@ export const homeFaqs = [
   ["Do you offer support after it's built?", "Yes. Operations Automation and AI Agents can include ongoing maintenance at $150 a month."],
   ["Why work with you?", "I look at your whole business, tell you what to fix first, use the simplest fix that works, and check that it worked."],
 ];
+
+
+
+export const about = {
+  greeting: "Hi, I'm Rose.",
+  intro: "I'm a business systems and automation specialist based in Nairobi. I help service businesses stop losing time, leads, and money to slow, manual work, through process fixes, connected tools, automation, and AI where it fits.",
+  journey: {
+    title: "My Journey",
+    paragraphs: [
+      "I started down this path because I watched my friend’s  business lose customers because messages sat unanswered overnight, and the fix was simpler than anyone thought.",
+      "I studied statistics and econometrics, and I've worked with data in SQL, Excel, and Python. That's why I measure: before I build anything, we agree on what to track, and after launch we check whether it worked.",
+      "I've built 10+  systems so far, including an after-hours AI agent for a dental clinic, a plumbing company's full lead-to-payment workflow, and an AI receptionist for a med spa. These are demonstration builds, and you can see how each one works in the case studies.",
+    ],
+  },
+  beyond: {
+    title: "Beyond the Work",
+    text: "I also teach mathematics, so explaining complicated things in plain words is a habit. When I'm not building workflows, you'll usually find me playing soccer and nature walks",
+  },
+  together: {
+    title: "Let's Work Together",
+    text: "Not sure what's slowing your business down? That's normal. Tell me how it runs, and I'll tell you what's worth fixing first.",
+  },
+};

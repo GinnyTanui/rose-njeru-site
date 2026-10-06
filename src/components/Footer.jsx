@@ -21,6 +21,7 @@ export default function Footer() {
             <li><Link className="text-cream/80 hover:text-accent" to="/">Home</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/services">All services</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/case-studies">Case studies</Link></li>
+            <li><Link className="text-cream/80 hover:text-accent" to="/about">About</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/pricing">Pricing packages</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/contact">Contact</Link></li>
             <li><Link className="text-cream/80 hover:text-accent" to="/consultation">Book a free consultation</Link></li>
@@ -30,8 +31,8 @@ export default function Footer() {
           <p className="mb-3 font-mono text-xs text-cream/50">Get in touch</p>
           <a className="break-all text-sm text-cream/80 hover:text-accent" href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <div className="mt-4 flex gap-3">
-            <a aria-label="Rose Njeru on LinkedIn" href={SITE.linkedin} className="grid h-10 w-10 place-items-center rounded-full border border-cream/25 hover:border-accent hover:text-accent"><FaLinkedinIn aria-hidden /></a>
-            <a aria-label="Rose Njeru on GitHub" href={SITE.github} className="grid h-10 w-10 place-items-center rounded-full border border-cream/25 hover:border-accent hover:text-accent"><FaGithub aria-hidden /></a>
+            <a aria-label="Rose Njeru on LinkedIn" href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full border border-cream/25 hover:border-accent hover:text-accent"><FaLinkedinIn aria-hidden /></a>
+<a aria-label="Rose Njeru on GitHub" href={SITE.github} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full border border-cream/25 hover:border-accent hover:text-accent"><FaGithub aria-hidden /></a>
           </div>
         </div>
       </Container>

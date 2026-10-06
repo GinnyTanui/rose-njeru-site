@@ -6,7 +6,6 @@ import { Button, Container } from './ui';
 
 const linkCls = ({ isActive }) => `border-b-2 py-1 text-sm transition ${isActive ? 'border-sand text-cream' : 'border-transparent text-cream/75 hover:text-cream'}`;
 
-/* Services opens a panel with the four services; everything else is a plain link. */
 function ServicesMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -62,6 +61,7 @@ export default function Navbar() {
           <NavLink to="/" end className={linkCls}>Home</NavLink>
           <ServicesMenu />
           <NavLink to="/case-studies" className={linkCls}>Case Studies</NavLink>
+          <NavLink to="/about" className={linkCls}>About</NavLink>
           <NavLink to="/pricing" className={linkCls}>Pricing</NavLink>
           <NavLink to="/contact" className={linkCls}>Contact</NavLink>
           <Button dark arrow={false} className="!min-h-[40px] !px-5 !py-2 !text-sm">{CTA_LABEL}</Button>
@@ -78,6 +78,7 @@ export default function Navbar() {
             {services.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} onClick={close} className="block py-2 text-sm text-cream/65">{s.name}</Link></li>)}
           </ul>
           <Link to="/case-studies" onClick={close} className="block py-3 text-cream/85">Case Studies</Link>
+          <Link to="/about" onClick={close} className="block py-3 text-cream/85">About</Link>
           <Link to="/pricing" onClick={close} className="block py-3 text-cream/85">Pricing</Link>
           <Link to="/contact" onClick={close} className="block py-3 text-cream/85">Contact</Link>
           <Button dark className="mt-3 w-full">{CTA_LABEL}</Button>
