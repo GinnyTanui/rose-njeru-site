@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://njeruautomation.com/sitemap.xml
