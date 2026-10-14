@@ -1,9 +1,9 @@
 import FinalCTA from '../components/FinalCTA';
 import { HeroBackground } from '../components/HeroBackground';
-import { Seo, breadcrumbLd } from '../components/Seo';
+import { breadcrumbLd, Seo } from '../components/Seo';
+import { ServiceCards } from '../components/Services';
 import { Container, Eyebrow, Section, TextLink } from '../components/ui';
-import { ServiceCards } from '../sections/home/Services';
-import { SITE, homeCta, services } from '../data';
+import { homeCta, services, SITE } from '../data';
 
 export default function ServicesPage() {
   return (

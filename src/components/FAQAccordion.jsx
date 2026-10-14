@@ -21,7 +21,7 @@ const Answer = ({ text, dark }) => {
 
 /* Questions split into two independent columns of cards (one column on mobile),
    so opening an answer only pushes down its own column. */
-export function FAQAccordion({ items, dark }) {
+function FAQAccordion({ items, dark }) {
   const [open, setOpen] = useState(0);
   const uid = useId();
   const half = Math.ceil(items.length / 2);
@@ -55,7 +55,7 @@ export function FAQAccordion({ items, dark }) {
 }
 
 /* Centered heading, questions underneath. */
-export const FAQSection = ({ items, dark, tone }) => (
+const FAQSection = ({ items, dark, tone }) => (
   <section id="faqs" aria-labelledby="faq-h" className={`${dark ? 'bg-ink text-cream' : tone === 'sand' ? 'bg-sand/25 text-ink' : 'bg-cream text-ink'} py-14 sm:py-16 lg:py-20`}>
     <Container>
       <header className="mx-auto mb-10 max-w-2xl text-center">

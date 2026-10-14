@@ -2,7 +2,7 @@ import FinalCTA from '../components/FinalCTA';
 import { HeroBackground } from '../components/HeroBackground';
 import { Seo, breadcrumbLd } from '../components/Seo';
 import { Container, Section } from '../components/ui';
-import { about } from '../content';
+import { about } from '../data';
 
 /* About page: navy intro, then the journey (navy card) beside "Beyond the Work" (warm-stone card),
    then the closing "Let's Work Together" call to action. */

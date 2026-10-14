@@ -3,8 +3,7 @@ import FinalCTA from '../components/FinalCTA';
 import { HeroBackground } from '../components/HeroBackground';
 import { Seo, breadcrumbLd } from '../components/Seo';
 import { Badge, Container, Dot, Eyebrow, Section, TextLink } from '../components/ui';
-import { caseStudies } from '../content';
-import { homeCta } from '../data';
+import { caseStudies, homeCta } from '../data';
 
 /* One block of a case study: plain text, a bullet list, or a step-by-step flow. */
 function Block({ b }) {

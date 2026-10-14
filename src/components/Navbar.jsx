@@ -6,6 +6,7 @@ import { Button, Container } from './ui';
 
 const linkCls = ({ isActive }) => `border-b-2 py-1 text-sm transition ${isActive ? 'border-sand text-cream' : 'border-transparent text-cream/75 hover:text-cream'}`;
 
+/* Services opens a panel with the four services; everything else is a plain link. */
 function ServicesMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -56,11 +57,18 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/95 text-cream backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
-        <Link to="/" className="font-display text-lg font-bold">{SITE.name}</Link>
+        <Link to="/" aria-label={`${SITE.name} home`} className="flex items-center gap-3">
+          <img src="/logo-full.png" alt="" width="58" height="40" className="h-10 w-auto" />
+          <span className="flex flex-col leading-none">
+            <span className="text-[13px] font-medium tracking-[0.22em]">ROSE NJERU</span>
+            <span className="mt-1.5 text-[10px] tracking-[0.5em] text-cream/70">AUTOMATION</span>
+          </span>
+        </Link>
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
           <NavLink to="/" end className={linkCls}>Home</NavLink>
           <ServicesMenu />
           <NavLink to="/case-studies" className={linkCls}>Case Studies</NavLink>
+          <NavLink to="/blog" className={linkCls}>Blog</NavLink>
           <NavLink to="/about" className={linkCls}>About</NavLink>
           <NavLink to="/pricing" className={linkCls}>Pricing</NavLink>
           <NavLink to="/contact" className={linkCls}>Contact</NavLink>
@@ -78,6 +86,7 @@ export default function Navbar() {
             {services.map((s) => <li key={s.slug}><Link to={`/services/${s.slug}`} onClick={close} className="block py-2 text-sm text-cream/65">{s.name}</Link></li>)}
           </ul>
           <Link to="/case-studies" onClick={close} className="block py-3 text-cream/85">Case Studies</Link>
+          <Link to="/blog" onClick={close} className="block py-3 text-cream/85">Blog</Link>
           <Link to="/about" onClick={close} className="block py-3 text-cream/85">About</Link>
           <Link to="/pricing" onClick={close} className="block py-3 text-cream/85">Pricing</Link>
           <Link to="/contact" onClick={close} className="block py-3 text-cream/85">Contact</Link>

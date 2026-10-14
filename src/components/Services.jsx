@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
-import { Section, SectionHeading, TextLink } from '../../components/ui';
-import { services } from '../../data';
+import { Link } from 'react-router-dom';
+import { services } from '../data';
+import { Section, SectionHeading, TextLink } from './ui';
 
-/* Rounded cards: number, name, short description, one button. Whole card is the link; fills teal on hover. */
+/* Rounded cards: number, name, short description, one button. Whole card is the link; fills navy on hover. */
 export const ServiceCards = () => (
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {services.map((s) => (
