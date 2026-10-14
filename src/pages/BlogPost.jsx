@@ -198,7 +198,7 @@ export default function BlogPost() {
               <div className="mt-6"><Eyebrow dark>BLOG</Eyebrow></div>
               <h1 id="post-h" className="text-2xl leading-[1.15] sm:text-4xl">{post.title}</h1>
               <p className="mt-4 text-base italic leading-relaxed text-cream/80 sm:text-lg">{post.excerpt}</p>
-              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru · {minutes(post)} min read</p>
+              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru</p>
             </div>
           </Container>
         </section>
