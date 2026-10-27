@@ -508,7 +508,7 @@ export const roi = {
 
 export const homeHero = {
   title: 'Make your operations work smarter with AI and automation.',
-  text: 'I help growing businesses simplify everyday operations, reduce repetitive work and connect the tools they already use so they spend less time managing processes and more time growing their business.',
+  text: 'Growing businessess deserve systems that make everyday operations easier.By simplifiying processes, reducing repetitive work and connecitng exisiting tools, your team can spend less time managing admin and more time focusing on customers and business growth.',
 };
 export const categories = [
   { no: '01', title: 'Improve processes', text: "Find what's slowing work down and make everyday tasks easier.", to: '/services/business-process-audit' },
