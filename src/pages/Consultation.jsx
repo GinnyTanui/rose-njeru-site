@@ -3,38 +3,7 @@ import { FiAlertCircle, FiCalendar, FiExternalLink } from 'react-icons/fi';
 import PageHero from '../components/PageHero';
 import { breadcrumbLd, Seo } from '../components/Seo';
 import { Section } from '../components/ui';
-
-// Rose's Calendly event link, set in .env as VITE_CALENDLY_URL (e.g. https://calendly.com/rose-njeru/free-consultation)
-const BASE_URL = import.meta.env.VITE_CALENDLY_URL;
-const SCRIPT_SRC = 'https://assets.calendly.com/assets/external/widget.js';
-const STYLE_SRC = 'https://assets.calendly.com/assets/external/widget.css';
-
-// Colours match the site: off-white background, navy text and buttons.
-// The compact inline calendar hides the event-details panel; the full-screen phone pop-up keeps it.
-const withOptions = (url, compact) =>
-  `${url}${url.includes('?') ? '&' : '?'}hide_gdpr_banner=1${compact ? '&hide_event_type_details=1' : ''}&background_color=F8FAFC&text_color=0F172A&primary_color=0F172A`;
-
-// Loads Calendly's script and stylesheet once, no matter how many times the page is opened.
-function loadCalendly() {
-  if (!document.querySelector(`link[href="${STYLE_SRC}"]`)) {
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = STYLE_SRC;
-    document.head.appendChild(css);
-  }
-  return new Promise((resolve, reject) => {
-    if (window.Calendly) return resolve();
-    let tag = document.querySelector(`script[src="${SCRIPT_SRC}"]`);
-    if (!tag) {
-      tag = document.createElement('script');
-      tag.src = SCRIPT_SRC;
-      tag.async = true;
-      document.body.appendChild(tag);
-    }
-    tag.addEventListener('load', resolve);
-    tag.addEventListener('error', reject);
-  });
-}
+import { BASE_URL, loadCalendly, withOptions } from '../calendly';
 
 // True on phones (under 640px wide). Updates if the screen is rotated or resized.
 function useIsPhone() {
@@ -85,7 +54,7 @@ function CalendlyBooking() {
             {phone ? (
               <div className="rounded-2xl border border-ink/15 bg-cream p-6 text-center">
                 <button type="button" onClick={openPopup}
-                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-base font-semibold text-cream transition hover:bg-brand-soft">
+                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-base font-semibold text-cream transition hover:bg-brand-deep">
                   <FiCalendar aria-hidden /> Choose a time
                 </button>
               </div>

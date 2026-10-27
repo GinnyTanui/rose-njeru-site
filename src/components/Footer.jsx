@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn, FaTiktok, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { SITE, services } from '../data';
 import { Container } from './ui';
 
 const a = 'text-white/85 hover:text-white';
 const h = 'mb-3 text-eyebrow font-semibold text-orange-soft';
+const socials = [
+  { label: 'LinkedIn', href: SITE.linkedin, Icon: FaLinkedinIn },
+  { label: 'TikTok', href: SITE.tiktok, Icon: FaTiktok },
+  { label: 'YouTube', href: SITE.youtube, Icon: FaYoutube },
+  { label: 'X', href: SITE.x, Icon: FaXTwitter },
+  { label: 'GitHub', href: SITE.github, Icon: FaGithub },
+];
 
 export default function Footer() {
   return (
@@ -34,9 +42,10 @@ export default function Footer() {
         <div>
           <p className={h}>GET IN TOUCH</p>
           <a className={`break-all text-small ${a}`} href={`mailto:${SITE.email}`}>{SITE.email}</a>
-          <div className="mt-4 flex gap-3">
-            <a aria-label="Rose Njeru on LinkedIn (opens in a new tab)" href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full border border-white/30 hover:border-mint hover:text-mint"><FaLinkedinIn aria-hidden /></a>
-            <a aria-label="Rose Njeru on GitHub (opens in a new tab)" href={SITE.github} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full border border-white/30 hover:border-mint hover:text-mint"><FaGithub aria-hidden /></a>
+          <div className="mt-4 flex flex-wrap gap-3">
+            {socials.map(({ label, href, Icon }) => (
+              <a key={label} aria-label={`Rose Njeru on ${label} (opens in a new tab)`} href={href} target="_blank" rel="noopener noreferrer" className="grid h-10 w-10 place-items-center rounded-full border border-white/30 transition hover:border-mint hover:text-mint"><Icon aria-hidden /></a>
+            ))}
           </div>
         </div>
       </Container>

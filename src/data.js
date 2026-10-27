@@ -16,6 +16,9 @@ export const SITE = {
   "linkedin": "https://www.linkedin.com/in/rose-njeru/",
   "upwork": "https://www.upwork.com/freelancers/~0101dd2356373bcdfb",
   "github": "https://github.com/rosemwikalinjeru-dev",
+  "tiktok": "https://www.tiktok.com/@rosenjeruautomation",
+  "youtube": "https://www.youtube.com/@rosenjeruautomation",
+  "x": "https://x.com/NjeruAutomation",
   "phone": "+254705043081",
   "phoneDisplay": "+254 705 043 081"
 };
@@ -491,8 +494,8 @@ export const caseStudies = [
 ];
 
 /* ---------- 6. Homepage ---------- */
-export const practical = {
-  title: 'Practical Ways Better Systems Improve Your Operations',
+export const roi = {
+  title: 'Turning Operational Improvements into Measurable ROI',
   text: 'Explore how process improvement, automation, connected systems and AI can help reduce manual work, improve customer experiences and make everyday operations easier to manage.',
   items: [
     ['business-process-audit', 'Identify What Is Slowing Your Operations Down', 'Understand where delays, repeated tasks and disconnected processes are affecting your operations. A Business Process Audit examines how work moves through your organisation and identifies what needs attention first.'],
@@ -500,18 +503,6 @@ export const practical = {
     ['systems-and-data-integration', 'Connect the Tools You Already Use', 'Bring your CRM, booking platforms, calendars, invoicing systems and other tools together. Connected systems allow information to flow between platforms, reducing duplicate data entry and inconsistent records.'],
     ['sales-and-marketing-automation', 'Turn More Enquiries Into Customers', 'Improve how enquiries are received, followed up and managed. Sales and marketing automation can support lead responses, qualification, follow-ups and routing, helping reduce the number of opportunities that go unattended.'],
     ['ai-agents', 'Put AI Agents to Work on Everyday Tasks', 'Use AI agents to respond to customer questions, support appointment booking, retrieve information and assist with internal tasks. Each agent is designed around approved information, defined responsibilities and human handover when needed.'],
-  ],
-};
-
-export const roi = {
-  title: 'Turning Operational Improvements into Measurable ROI',
-  text: 'Explore how process improvement, automation, connected systems and AI can help reduce manual work, improve customer experiences and make everyday operations easier to manage.',
-  items: [
-    ['business-process-audit', 'Business Process Audit', 'Understand where delays, repeated tasks and disconnected processes are affecting your operations. A Business Process Audit examines how work moves through your organisation and identifies what needs attention first.'],
-    ['operational-process-automation', 'Operational Process Automation', 'Reduce the time spent on routine administration, follow-ups, scheduling, customer updates and payment reminders. Automated workflows help move tasks forward without relying on someone to remember every step.'],
-    ['systems-and-data-integration', 'Systems and Data Integration', 'Bring your CRM, booking platforms, calendars, invoicing systems and other tools together. Connected systems allow information to flow between platforms, reducing duplicate data entry and inconsistent records.'],
-    ['sales-and-marketing-automation', 'Sales & Marketing Automation', 'Improve how enquiries are received, followed up and managed. Sales and marketing automation can support lead responses, qualification, follow-ups and routing, helping reduce the number of opportunities that go unattended.'],
-    ['ai-agents', 'AI Agents', 'Use AI agents to respond to customer questions, support appointment booking, retrieve information and assist with internal tasks. Each agent is designed around approved information, defined responsibilities and human handover when needed.'],
   ],
 };
 
@@ -590,6 +581,8 @@ export const homeFaqs = [
 ];
 
 export const homeCta = {
+  // Short reassurances shown under the button. Each one restates something the service pages already promise.
+  assurances: ['Free first consultation', 'The audit stands alone, with no obligation to build', 'Every solution tested and documented before launch', 'Your team stays in control, with human handover built in'],
   h: 'Discover What AI & Automation Could Do for You',
   p: ['Explore how AI, automation and connected systems could improve your processes, reduce repetitive work and make everyday activities easier to manage.', 'Whether you need to improve an existing process, connect the tools you use or introduce an AI-powered solution, the first step is understanding what you need and where improvements are possible.'],
 };

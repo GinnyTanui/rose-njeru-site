@@ -1,5 +1,5 @@
 import { FaMicrosoft, FaWhatsapp } from 'react-icons/fa';
-import { FiAlertCircle, FiArrowRight, FiBarChart2, FiCpu, FiLayers, FiLink, FiMessageSquare, FiPhoneCall, FiRepeat, FiSearch, FiShare2, FiTarget, FiTrendingUp, FiUserCheck, FiUsers, FiZap } from 'react-icons/fi';
+import { FiAlertCircle, FiArrowRight, FiBarChart2, FiCpu, FiLayers, FiMessageSquare, FiPhoneCall, FiShare2, FiTarget, FiUserCheck, FiUsers, FiZap } from 'react-icons/fi';
 import { SiAirtable, SiClaude, SiMake, SiN8N, SiNotion, SiPython, SiZapier } from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import FAQSection from '../components/FAQAccordion';
@@ -8,7 +8,7 @@ import { HeroBackground } from '../components/HeroBackground';
 import { faqLd, Seo, siteNodes } from '../components/Seo';
 import ServicesSection from '../components/Services';
 import { Badge, Button, Container, Section, SectionHeading, TextLink, highlight } from '../components/ui';
-import { caseStudies, casesTitle, categories, difference, homeCta, homeFaqs, homeHero, practical, process, roi, toolsSection as T, why, whyTitle } from '../data';
+import { caseStudies, casesTitle, categories, difference, homeCta, homeFaqs, homeHero, process, roi, toolsSection as T, why, whyTitle } from '../data';
 
 /* Hero: full electric blue, centred white text, the illustration spreads across the whole hero behind it. */
 function Hero() {
@@ -67,8 +67,8 @@ function Difference() {
   );
 }
 
-/* Five rows: what it is, what it does, and a Read More link to the service page. Rows (not cards) so it reads differently from the Services cards above. */
-const roiIcons = [FiSearch, FiRepeat, FiLink, FiTrendingUp, FiCpu];
+/* Five rows: an outcome, what it involves, and a Read More link to the matching service page. Rows (not cards) so it reads differently from the Services cards above. */
+const roiIcons = [FiAlertCircle, FiZap, FiShare2, FiUserCheck, FiCpu];
 function Roi() {
   return (
     <Section tone="light" labelledBy="roi-h">
@@ -83,43 +83,13 @@ function Roi() {
                 <h3>{name}</h3>
               </div>
               <p className="text-small text-muted">{text}</p>
-              <Link to={`/services/${slug}`} aria-label={`Read more about ${name}`} className="group inline-flex items-center gap-2 text-small font-semibold text-orange-ink underline decoration-orange/50 decoration-2 underline-offset-8">
+              <Link to={`/services/${slug}`} aria-label={`Read more: ${name}`} className="group inline-flex items-center gap-2 text-small font-semibold text-orange-ink underline decoration-orange/50 decoration-2 underline-offset-8">
                 Read More <FiArrowRight aria-hidden className="transition group-hover:translate-x-1" />
               </Link>
             </li>
           );
         })}
       </ul>
-    </Section>
-  );
-}
-
-/* Five practical outcomes. Four cards in a 2x2 grid, and the fifth (AI agents) as a full-width blue banner so the grid has a clear ending. */
-const practicalIcons = [FiAlertCircle, FiZap, FiShare2, FiUserCheck, FiCpu];
-function Practical() {
-  const last = practical.items.length - 1;
-  return (
-    <Section tone="white" labelledBy="practical-h">
-      <SectionHeading id="practical-h" title={highlight(practical.title, 'Better Systems')}>{practical.text}</SectionHeading>
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
-        {practical.items.map(([slug, title, text], i) => {
-          const Icon = practicalIcons[i];
-          const featured = i === last;
-          return (
-            <article key={slug} className={`flex flex-col rounded-2xl p-6 sm:p-8 ${featured ? 'bg-brand text-white md:col-span-2 md:flex-row md:items-center md:gap-8' : 'border border-brand/15 bg-cream'}`}>
-              <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl text-2xl ${featured ? 'bg-white/15 text-white' : 'bg-orange/15 text-orange-ink'}`}><Icon aria-hidden /></span>
-              <div className={featured ? 'mt-5 md:mt-0 md:flex-1' : 'mt-5'}>
-                <h3>{title}</h3>
-                <p className={`mt-3 text-small ${featured ? 'text-white/90' : 'text-muted'}`}>{text}</p>
-              </div>
-              <Link to={`/services/${slug}`} aria-label={`Read more: ${title}`}
-                className={`group mt-5 inline-flex items-center gap-2 self-start text-small font-semibold underline decoration-2 underline-offset-8 ${featured ? 'text-white decoration-orange md:mt-0 md:shrink-0' : 'mt-auto pt-0 text-orange-ink decoration-orange/50'}`}>
-                Read More <FiArrowRight aria-hidden className="transition group-hover:translate-x-1" />
-              </Link>
-            </article>
-          );
-        })}
-      </div>
     </Section>
   );
 }
@@ -262,9 +232,9 @@ export default function Home() {
         description="Rose Njeru helps growing businesses simplify everyday operations, reduce repetitive work and connect the tools they already use with AI, automation and connected systems."
         jsonLd={[...siteNodes, faqLd(homeFaqs)]} />
       <main>
-        <Hero /><Categories /><Difference /><ServicesSection /><Roi /><CaseStudyPreview /><Practical /><Process /><Tools /><Why />
+        <Hero /><Categories /><Difference /><ServicesSection /><Roi /><CaseStudyPreview /><Process /><Tools /><Why />
         <FAQSection items={homeFaqs} tone="white" />
-        <FinalCTA title={homeCta.h} text={homeCta.p} variant="workflow" />
+        <FinalCTA title={homeCta.h} text={homeCta.p} variant="workflow" assurances={homeCta.assurances} emailNote />
       </main>
     </>
   );

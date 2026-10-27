@@ -42,7 +42,7 @@ export const providerRef = { '@id': ID.business };
 // Only facts supplied in the project content.
 export const siteNodes = [
   { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: SITE.url, name: SITE.name },
-  { '@type': 'Person', '@id': ID.rose, name: 'Rose Njeru', jobTitle: 'AI Automation & Business Systems Specialist', url: SITE.url, email: SITE.email, sameAs: [SITE.linkedin, SITE.upwork, SITE.github] },
+  { '@type': 'Person', '@id': ID.rose, name: 'Rose Njeru', jobTitle: 'AI Automation & Business Systems Specialist', url: SITE.url, email: SITE.email, sameAs: [SITE.linkedin, SITE.tiktok, SITE.youtube, SITE.x, SITE.upwork, SITE.github] },
   { '@type': 'ProfessionalService', '@id': ID.business, name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@id': ID.rose }, description: 'AI automation and business operations solutions for service businesses: business process audits, operational process automation, systems and data integration, sales and marketing automation and AI agents.' , hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, url: `${SITE.url}/services/${s.slug}` } })) } },
 ];
 

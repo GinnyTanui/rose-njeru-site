@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SITE } from './data';
+import { warmCalendly } from './calendly';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -48,6 +49,7 @@ function WhatsAppButton() {
 }
 
 export default function App() {
+  useEffect(() => { warmCalendly(); }, []); // preload the booking calendar as soon as someone lands on the site
   return (
     <BrowserRouter>
       <ScrollManager />
