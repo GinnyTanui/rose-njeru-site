@@ -10,6 +10,7 @@ import { homeCta } from '../data';
 import { minutes, posts } from '../posts';
 import NotFound from './NotFound';
 
+/* ---------- Reading the post text (see the guide at the top of posts.js) ---------- */
 
 const slug = (s) => s.toLowerCase().replace(/^\d+\.\s*/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const plain = (s) => s.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\{\{|\}\}|\*\*|\*/g, '');
@@ -57,7 +58,7 @@ function parse(md) {
   return blocks;
 }
 
-
+/* **bold**  *italic*  [link](url)  {{formula}} */
 function Inline({ text }) {
   const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\)|\{\{.+?\}\})/g).filter(Boolean);
   return parts.map((p, k) => {
@@ -116,7 +117,7 @@ function Body({ blocks, images }) {
         <ol key={key} className="mt-4 space-y-2.5" role="list">
           {b.items.map((it, j) => (
             <li key={it} className="flex items-start gap-3 text-[15px] leading-[1.7] text-ink/85 sm:text-base">
-              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ink font-mono text-xs text-cream">{j + 1}</span>
+              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand font-mono text-xs text-cream">{j + 1}</span>
               <span><Inline text={it} /></span>
             </li>
           ))}
@@ -133,7 +134,7 @@ function Body({ blocks, images }) {
         <div key={key} className="mt-6 overflow-x-auto rounded-2xl border border-ink/15">
           <table className="w-full min-w-[32rem] border-collapse text-left text-sm">
             <thead>
-              <tr className="bg-ink text-cream">
+              <tr className="bg-brand text-cream">
                 {b.head.map((h, c) => <th key={h} scope="col" className={`px-4 py-3 font-display font-bold ${b.align[c] === 'right' ? 'text-right' : ''}`}>{h}</th>)}
               </tr>
             </thead>
@@ -198,7 +199,7 @@ export default function BlogPost() {
               <div className="mt-6"><Eyebrow dark>BLOG</Eyebrow></div>
               <h1 id="post-h" className="text-2xl leading-[1.15] sm:text-4xl">{post.title}</h1>
               <p className="mt-4 text-base italic leading-relaxed text-cream/80 sm:text-lg">{post.excerpt}</p>
-              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru</p>
+              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru · {minutes(post)} min read</p>
             </div>
           </Container>
         </section>

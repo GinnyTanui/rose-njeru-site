@@ -1,3 +1,11 @@
 {
+  "redirects": [
+    { "source": "/services/business-audit", "destination": "/services/business-process-audit", "permanent": true },
+    { "source": "/services/operations-automation", "destination": "/services/operational-process-automation", "permanent": true },
+    { "source": "/services/workflow-automation", "destination": "/services/operational-process-automation", "permanent": true },
+    { "source": "/services/integration-build", "destination": "/services/systems-and-data-integration", "permanent": true },
+    { "source": "/services/business-systems-integration", "destination": "/services/systems-and-data-integration", "permanent": true },
+    { "source": "/services/lead-follow-up-automation", "destination": "/services/sales-and-marketing-automation", "permanent": true }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

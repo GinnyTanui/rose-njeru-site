@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SITE } from '../data';
+import { SITE, services } from '../data';
 
 const setMeta = (attr, key, content) => {
   let el = document.head.querySelector(`meta[${attr}="${key}"]`);
@@ -8,7 +8,7 @@ const setMeta = (attr, key, content) => {
 };
 
 /* Per-page title, description, canonical, Open Graph, Twitter and JSON-LD (@graph). */
-export function Seo({ title, description, path = '/', jsonLd = [], noindex = false }) {
+export function Seo({ title, description, path = '/', jsonLd = [], noindex = false, image = '/og-default.png' }) {
   useEffect(() => {
     const url = SITE.url + path;
     document.title = title;
@@ -19,7 +19,9 @@ export function Seo({ title, description, path = '/', jsonLd = [], noindex = fal
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', url);
-    setMeta('name', 'twitter:card', 'summary');
+    setMeta('property', 'og:image', SITE.url + image);
+    setMeta('name', 'twitter:image', SITE.url + image);
+    setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
     let link = document.head.querySelector('link[rel="canonical"]');
@@ -41,7 +43,7 @@ export const providerRef = { '@id': ID.business };
 export const siteNodes = [
   { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: SITE.url, name: SITE.name },
   { '@type': 'Person', '@id': ID.rose, name: 'Rose Njeru', jobTitle: 'AI Automation & Business Systems Specialist', url: SITE.url, email: SITE.email, sameAs: [SITE.linkedin, SITE.upwork, SITE.github] },
-  { '@type': 'ProfessionalService', '@id': ID.business, name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@id': ID.rose }, description: 'AI automation and business operations solutions for service businesses: business audits, operations automation, tool integrations and AI agents.' },
+  { '@type': 'ProfessionalService', '@id': ID.business, name: SITE.name, url: SITE.url, email: SITE.email, founder: { '@id': ID.rose }, description: 'AI automation and business operations solutions for service businesses: business process audits, operational process automation, systems and data integration, sales and marketing automation and AI agents.' , hasOfferCatalog: { '@type': 'OfferCatalog', name: 'Services', itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, url: `${SITE.url}/services/${s.slug}` } })) } },
 ];
 
 export const faqLd = (items) => ({

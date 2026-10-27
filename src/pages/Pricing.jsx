@@ -1,26 +1,19 @@
 import { FiCheck, FiClock, FiRefreshCw } from 'react-icons/fi';
 import FinalCTA from '../components/FinalCTA';
-import { HeroBackground } from '../components/HeroBackground';
+import PageHero from '../components/PageHero';
 import { breadcrumbLd, providerRef, Seo } from '../components/Seo';
 import { Button, Container, Eyebrow, Section, TextLink } from '../components/ui';
 import { CTA_LABEL, pricing, services, SITE } from '../data';
 
 function PricingHero() {
   return (
-    <section aria-labelledby="pricing-h" className="relative overflow-hidden text-cream">
-      <HeroBackground density={0.7} />
-      <Container className="relative py-14 sm:py-20 lg:py-24">
-        <div className="max-w-2xl">
-          <Eyebrow dark>PRICING</Eyebrow>
-          <h1 id="pricing-h" className="text-3xl leading-[1.1] sm:text-5xl">Simple Pricing for Different Needs</h1>
-          <p className="mt-5 text-[15px] leading-relaxed text-cream/80 sm:text-base">Clear packages showing what&apos;s included, delivery times, and who each option is suited for.</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button dark>{CTA_LABEL}</Button>
-            <Button to="/services" variant="secondary" dark>Explore Services</Button>
-          </div>
-        </div>
-      </Container>
-    </section>
+    <PageHero id="pricing-h" eyebrow="PRICING" title="Simple Pricing for Different Needs" variant="pricing">
+      <p>Clear packages showing what&apos;s included, delivery times, and who each option is suited for.</p>
+      <div className="flex flex-col gap-3 pt-3 sm:flex-row">
+        <Button dark>{CTA_LABEL}</Button>
+        <Button to="/services" variant="secondary" dark>Explore Services</Button>
+      </div>
+    </PageHero>
   );
 }
 
@@ -32,7 +25,7 @@ const Tiers = ({ name, tiers }) => (
   <div className="mt-4 overflow-hidden rounded-2xl border border-ink/15">
     <table className="w-full text-sm">
       <caption className="sr-only">{name} pricing by number of tools connected</caption>
-      <thead className="bg-ink text-cream"><tr><th scope="col" className="px-4 py-2 text-left font-medium">Tools connected</th><th scope="col" className="px-4 py-2 text-right font-medium">Price</th></tr></thead>
+      <thead className="bg-brand text-cream"><tr><th scope="col" className="px-4 py-2 text-left font-medium">Tools connected</th><th scope="col" className="px-4 py-2 text-right font-medium">Price</th></tr></thead>
       <tbody className="divide-y divide-ink/10 bg-cream">
         {tiers.map(([t, p]) => <tr key={t}><th scope="row" className="px-4 py-2.5 text-left font-normal">{t}</th><td className="px-4 py-2.5 text-right font-display font-bold">{p}</td></tr>)}
       </tbody>
@@ -49,11 +42,11 @@ function PackageGrid() {
           <article key={p.slug} className="flex flex-col rounded-3xl border border-ink/15 bg-cream p-6 sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="font-mono text-xs text-ink/55">Package {services.find((s) => s.slug === p.slug).no}</p>
+                <p className="font-mono text-xs text-ink/55">Package {services.find((s) => s.slug === p.slug)?.no ?? String(i + 1).padStart(2, '0')}</p>
                 <h3 className="mt-2 text-2xl">{p.name}</h3>
               </div>
               <div className="text-right">
-                <p className="font-display text-3xl font-extrabold leading-none sm:text-4xl">{p.price}</p>
+                <p className="font-display text-3xl font-bold leading-none sm:text-4xl">{p.price}</p>
                 {p.priceNote && <p className="mt-1 text-xs text-ink/60">{p.priceNote}</p>}
               </div>
             </div>
@@ -66,8 +59,8 @@ function PackageGrid() {
             <ul className="mt-3 space-y-2">
               {p.includes.map((x) => <li key={x} className="flex items-start gap-2 text-[15px] text-ink/85"><FiCheck className="mt-1 shrink-0 text-ink" aria-hidden />{x}</li>)}
             </ul>
-            <div className="mt-6 rounded-2xl bg-ink p-5 text-cream">
-              <h4 className="font-display text-sm font-bold text-accent">You get</h4>
+            <div className="mt-6 rounded-2xl bg-brand p-5 text-cream">
+              <h4 className="font-display text-sm font-bold text-white">You get</h4>
               <p className="mt-1.5 text-[15px] leading-relaxed text-cream/85">{p.get}</p>
             </div>
             <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-7">
@@ -89,7 +82,7 @@ export default function Pricing() {
   return (
     <>
       <Seo path="/pricing" title="Pricing Packages for AI Automation Services | Rose Njeru"
-        description="Clear pricing for a Business Audit, Operations Automation, Integration Build and AI Agents, with delivery times and what each package includes."
+        description="Clear pricing for a Business Process Audit, Operational Process Automation, Systems and Data Integration and AI Agents, with delivery times, maintenance options and what each package includes."
         jsonLd={[
           breadcrumbLd([['Home', '/'], ['Pricing', '/pricing']]),
           ...pricing.map((p) => ({ '@type': 'Service', name: p.name, url: `${SITE.url}/services/${p.slug}`, provider: providerRef, offers: offer(p) })),

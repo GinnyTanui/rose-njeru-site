@@ -85,7 +85,7 @@ function CalendlyBooking() {
             {phone ? (
               <div className="rounded-2xl border border-ink/15 bg-cream p-6 text-center">
                 <button type="button" onClick={openPopup}
-                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-base font-semibold text-cream transition hover:bg-ink-soft">
+                  className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-base font-semibold text-cream transition hover:bg-brand-soft">
                   <FiCalendar aria-hidden /> Choose a time
                 </button>
               </div>
@@ -111,10 +111,10 @@ export default function Consultation() {
   return (
     <>
       <Seo path="/consultation" title="Book a Free Consultation | Rose Njeru"
-        description="Pick a time that suits you for a free consultation about automation, integrations or AI agents for your business."
+        description="Pick a time for a free consultation about a business process audit, operational process automation, systems and data integration, sales and marketing automation or AI agents."
         jsonLd={[breadcrumbLd([['Home', '/'], ['Book a Free Consultation', '/consultation']])]} />
       <main>
-        <PageHero compact id="consult-h" eyebrow="FREE CONSULTATION" title="Book a Free Consultation">
+        <PageHero id="consult-h" eyebrow="FREE CONSULTATION" title="Book a Free Consultation" variant="contact">
           <p>Pick a time that suits you, and tell me a little about how your business runs.</p>
           <p>I&apos;ll review the details before the call so the conversation is useful.</p>
         </PageHero>

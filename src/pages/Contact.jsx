@@ -57,7 +57,7 @@ const TextArea = ({ label, name, required, placeholder, rows = 5 }) => (
 const Honeypot = () => <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />;
 
 const FormStatus = ({ status, successText }) => {
-  if (status === 'success') return <p role="status" className="flex items-start gap-2 rounded-2xl bg-ink px-4 py-3 text-sm text-cream"><FiCheckCircle className="mt-0.5 shrink-0 text-accent" aria-hidden />{successText}</p>;
+  if (status === 'success') return <p role="status" className="flex items-start gap-2 rounded-2xl bg-brand px-4 py-3 text-sm text-cream"><FiCheckCircle className="mt-0.5 shrink-0 text-white" aria-hidden />{successText}</p>;
   if (status === 'error') return <p role="alert" className="flex items-start gap-2 rounded-2xl border border-accent bg-accent/15 px-4 py-3 text-sm"><FiAlertCircle className="mt-0.5 shrink-0" aria-hidden />Something went wrong sending that. Please try again, or email {SITE.email}.</p>;
   if (status === 'unconfigured') return <p role="alert" className="flex items-start gap-2 rounded-2xl border border-accent bg-accent/15 px-4 py-3 text-sm"><FiAlertCircle className="mt-0.5 shrink-0" aria-hidden />This form isn&apos;t connected to Formspree yet. Add the form ID to your .env file (see README).</p>;
   return null;
@@ -68,7 +68,7 @@ const Row = ({ icon: I, label, href, children }) => {
   return (
     <li>
       <a href={href} {...(external && { target: '_blank', rel: 'noopener noreferrer' })} className="group flex items-center gap-2.5 rounded-lg border border-ink/15 bg-cream p-2.5 transition hover:border-ink">
-        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ink text-sm text-accent"><I aria-hidden /></span>
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-sm text-white"><I aria-hidden /></span>
         <span><span className="block text-[11px] text-ink/55">{label}</span><span className="break-all text-[13px] font-medium">{children}</span></span>
       </a>
     </li>
@@ -84,7 +84,7 @@ function ContactDetails() {
         {SITE.phone && <Row icon={FiPhone} label="Phone" href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</Row>}
         {SITE.location && (
           <li className="flex items-center gap-2.5 rounded-lg border border-ink/15 bg-cream p-2.5">
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-ink text-sm text-accent"><FiMapPin aria-hidden /></span>
+            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand text-sm text-white"><FiMapPin aria-hidden /></span>
             <span><span className="block text-[11px] text-ink/55">Location / service area</span><span className="text-[13px] font-medium">{SITE.location}</span></span>
           </li>
         )}
@@ -108,7 +108,7 @@ function ContactForm() {
         </div>
         <TextField label="Subject / Reason for Contact" name="subject" required />
         <TextArea label="Message" name="message" required rows={3} />
-        <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[36px] items-center justify-center gap-2 rounded-full bg-ink px-4 py-1.5 text-[13px] font-semibold text-cream transition hover:bg-ink-soft disabled:opacity-60">
+        <button type="submit" disabled={status === 'sending'} className="inline-flex min-h-[36px] items-center justify-center gap-2 rounded-full bg-brand px-4 py-1.5 text-[13px] font-semibold text-cream transition hover:bg-brand-soft disabled:opacity-60">
           {status === 'sending' ? 'Sending…' : 'Send Message'} <FiArrowRight aria-hidden />
         </button>
         <FormStatus status={status} successText="Thank you. Your message has been sent." />
@@ -122,10 +122,10 @@ export default function Contact() {
   return (
     <>
       <Seo path="/contact" title="Contact Rose Njeru | Let's Talk"
-        description="Have a question or want to get in touch? Send Rose Njeru a message about AI automation, business operations or tool integrations."
+        description="Have a question or want to get in touch? Message Rose Njeru about a business process audit, process automation, systems and data integration, sales and marketing automation or AI agents."
         jsonLd={[breadcrumbLd([['Home', '/'], ['Contact', '/contact']]), { '@type': 'ContactPage', name: 'Contact' }]} />
       <main>
-        <PageHero id="contact-h" eyebrow="CONTACT" title="Let's Talk">
+        <PageHero id="contact-h" eyebrow="CONTACT" title="Let's Talk" variant="contact">
           <p>Have a question, need more information, or want to get in touch? Send us a message and we&apos;ll get back to you.</p>
         </PageHero>
         <Section className="!py-10 sm:!py-12">

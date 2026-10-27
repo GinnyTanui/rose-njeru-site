@@ -4,15 +4,26 @@
 
 @layer base {
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-  body { @apply bg-cream font-sans text-[15px] leading-relaxed text-ink antialiased sm:text-base; }
-  h1, h2, h3 { @apply font-display font-extrabold tracking-tight; text-wrap: balance; }
-  /* Stone ring with a navy halo: visible on both the off-white and the navy sections. */
-  :focus-visible { outline: 2px solid #D6CEC2; outline-offset: 2px; box-shadow: 0 0 0 5px #0F172A; }
+  body { @apply bg-cream font-sans text-body text-ink antialiased; }
+  h1, h2, h3, h4 { @apply font-display font-bold; text-wrap: balance; }
+  h1 { @apply text-h1; }
+  h2 { @apply text-h2; }
+  h3 { @apply text-h3; }
+  h4 { @apply text-base; }
+  p { text-wrap: pretty; }
+  /* Blue ring + white halo: visible on the paper background and on the electric-blue bands. */
+  :focus-visible { outline: 2px solid #2F5BFF; outline-offset: 2px; box-shadow: 0 0 0 5px #fff; }
 }
 @layer utilities {
+  /* Faint mint blueprint grid used behind every hero. */
+  .bg-blueprint {
+    background-image: linear-gradient(rgba(168,216,185,.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,216,185,.14) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
   .bg-grid {
-    background-image: linear-gradient(rgba(248,250,252,.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(248,250,252,.06) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
     background-size: 36px 36px;
   }
 }
