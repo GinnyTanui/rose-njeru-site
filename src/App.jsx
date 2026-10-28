@@ -1,8 +1,8 @@
+
 import { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SITE } from './data';
-import { warmCalendly } from './calendly';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -19,41 +19,63 @@ const Pricing = lazy(() => import('./pages/Pricing'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Consultation = lazy(() => import('./pages/Consultation'));
 
-// Scrolls to #hash targets (e.g. /#faqs, /case-studies#ai-agents) and to top on route change.
-// Lazy pages may not be on screen yet, so it keeps looking for the target for about 2 seconds.
+// Scrolls to hash targets and to top on route change.
 function ScrollManager() {
   const { pathname, hash } = useLocation();
+
   useEffect(() => {
-    if (!hash) { window.scrollTo(0, 0); return undefined; }
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return undefined;
+    }
+
     let tries = 0;
+
     const timer = setInterval(() => {
       const el = document.querySelector(hash);
-      if (el) { el.scrollIntoView(); clearInterval(timer); }
-      else if (++tries > 25) clearInterval(timer);
+
+      if (el) {
+        el.scrollIntoView();
+        clearInterval(timer);
+      } else if (++tries > 25) {
+        clearInterval(timer);
+      }
     }, 80);
+
     return () => clearInterval(timer);
   }, [pathname, hash]);
+
   return null;
 }
 
-// Floating WhatsApp button, bottom-right on every page. The number comes from SITE.phone in data.js.
+// Floating WhatsApp button.
 function WhatsAppButton() {
   const href = `https://wa.me/${SITE.phone.replace(/\D/g, '')}?text=${encodeURIComponent("Hi Rose, I'd like to know more about your services.")}`;
+
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" aria-label="Chat with Rose on WhatsApp (opens in a new tab)"
-      style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)', marginRight: 'env(safe-area-inset-right, 0px)' }}
-      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg shadow-ink/30 transition hover:scale-105 sm:bottom-6 sm:right-6">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Rose on WhatsApp (opens in a new tab)"
+      style={{
+        marginBottom: 'env(safe-area-inset-bottom, 0px)',
+        marginRight: 'env(safe-area-inset-right, 0px)',
+      }}
+      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-lg shadow-ink/30 transition hover:scale-105 sm:bottom-6 sm:right-6"
+    >
       <FaWhatsapp size={30} aria-hidden />
     </a>
   );
 }
 
 export default function App() {
-  useEffect(() => { warmCalendly(); }, []); // preload the booking calendar as soon as someone lands on the site
   return (
     <BrowserRouter>
       <ScrollManager />
+
       <Navbar />
+
       <Suspense fallback={<div className="min-h-[60vh]" />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -69,6 +91,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
+
       <Footer />
       <WhatsAppButton />
     </BrowserRouter>
