@@ -392,4 +392,4 @@ Know someone who set up automation last year? Send them this guide.
 ];
 
 
-export const minutes = (p) => Math.max(1, Math.round(p.body.split(/\s+/).length / 200));
+   export const minutes = (p) => p.minutes ?? Math.max(1, Math.round(p.body.split(/\s+/).length / 200));
