@@ -1,0 +1,112 @@
+import { defineArrayMember, defineField, defineType } from 'sanity'
+
+export default defineType({
+  name: 'post',
+  title: 'Blog post',
+  type: 'document',
+  groups: [
+    { name: 'content', title: 'Content', default: true },
+    { name: 'seo', title: 'Google & sharing' },
+  ],
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      group: 'content',
+      validation: (rule) => rule.required().max(110),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Web address (URL)',
+      type: 'slug',
+      group: 'content',
+      description: 'Click "Generate". This becomes njeruautomation.com/blog/<this>. Please do not change it after the post is published.',
+      options: { source: 'title', maxLength: 80 },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'publishedAt',
+      title: 'Publish date',
+      type: 'datetime',
+      group: 'content',
+      description: 'The post appears on the site on this date. Set a future date to schedule it (it must still be Published).',
+      initialValue: () => new Date().toISOString(),
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'excerpt',
+      title: 'Short summary',
+      type: 'text',
+      rows: 3,
+      group: 'content',
+      description: 'One or two sentences shown on the blog list and under the title.',
+      validation: (rule) => rule.required().max(220),
+    }),
+    defineField({
+      name: 'coverImage',
+      title: 'Cover picture',
+      type: 'image',
+      group: 'content',
+      description: 'Wide pictures work best (16:9, at least 1200 px wide).',
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: 'alt', type: 'string', title: 'Describe the picture', validation: (rule) => rule.required() }),
+      ],
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Topics (optional)',
+      type: 'array',
+      group: 'content',
+      description: 'One to three short labels, like "AI Agents" or "Automation". Press Enter after each. Shown on the blog cards.',
+      of: [defineArrayMember({ type: 'string' })],
+      options: { layout: 'tags' },
+      validation: (rule) => rule.max(3),
+    }),
+    defineField({ name: 'body', title: 'Post content', type: 'blockContent', group: 'content' }),
+    defineField({
+      name: 'showContents',
+      title: 'Show "In this guide" contents box',
+      type: 'boolean',
+      group: 'content',
+      description: 'Built automatically from your H2 headings (needs at least three).',
+      initialValue: true,
+    }),
+    defineField({
+      name: 'faq',
+      title: 'FAQ (optional)',
+      type: 'array',
+      group: 'content',
+      description: 'Questions and answers shown at the end of the post. Google can show these in search results.',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({ name: 'question', type: 'string', validation: (rule) => rule.required() }),
+            defineField({ name: 'answer', type: 'text', rows: 3, validation: (rule) => rule.required() }),
+          ],
+          preview: { select: { title: 'question', subtitle: 'answer' } },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'description',
+      title: 'Google description',
+      type: 'text',
+      rows: 3,
+      group: 'seo',
+      description: 'The grey text under the title in Google. Aim for 120–160 characters. If empty, the short summary is used.',
+      validation: (rule) => rule.max(160).warning('Google usually cuts descriptions longer than 160 characters.'),
+    }),
+  ],
+  orderings: [{ title: 'Newest first', name: 'dateDesc', by: [{ field: 'publishedAt', direction: 'desc' }] }],
+  preview: {
+    select: { title: 'title', date: 'publishedAt', media: 'coverImage' },
+    prepare: ({ title, date, media }) => ({
+      title,
+      subtitle: date ? new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'No date',
+      media,
+    }),
+  },
+})
