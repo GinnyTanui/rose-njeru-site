@@ -7,7 +7,9 @@ import PostCard from '../components/PostCard';
 import { Seo, breadcrumbLd, faqLd, providerRef } from '../components/Seo';
 import { Container, Dot, Eyebrow, Section } from '../components/ui';
 import { homeCta } from '../data';
-import { minutes, posts } from '../posts';
+import PortableBody, { PostFaq } from '../components/PortableBody';
+import { usePost, usePosts } from '../hooks/usePosts';
+import { minutes } from '../posts';
 import NotFound from './NotFound';
 
 /* ---------- Reading the post text (see the guide at the top of posts.js) ---------- */
@@ -175,19 +177,22 @@ function faqPairs(blocks) {
 
 export default function BlogPost() {
   const { slug: postSlug } = useParams();
-  const post = posts.find((p) => p.slug === postSlug);
+  const { post, loading } = usePost(postSlug);
+  const { posts } = usePosts();
+  if (loading) return <main><div className="min-h-[70vh]" aria-busy="true" /></main>;
   if (!post) return <NotFound />;
-  const blocks = parse(post.body);
-  const faq = faqPairs(blocks);
+  const fromSanity = Array.isArray(post.body); // Sanity posts are a list of blocks; the older posts are plain text
+  const blocks = fromSanity ? [] : parse(post.body);
+  const faq = fromSanity ? post.faq.map((f) => [f.question, f.answer]) : faqPairs(blocks);
   const path = `/blog/${post.slug}`;
-  const others = posts.filter((p) => p.slug !== post.slug);
+  const others = posts.filter((p) => p.slug !== post.slug).slice(0, 4);
 
   return (
     <>
-      <Seo path={path} title={`${post.title} | Rose Njeru`} description={post.description}
+      <Seo path={path} title={`${post.title} | Rose Njeru`} description={post.description} image={post.ogImage || post.cover || undefined}
         jsonLd={[
           breadcrumbLd([['Home', '/'], ['Blog', '/blog'], [post.title, path]]),
-          { '@type': 'BlogPosting', headline: post.title, description: post.description, author: { '@type': 'Person', name: 'Rose Njeru' }, publisher: providerRef },
+          { '@type': 'BlogPosting', headline: post.title, description: post.description, author: { '@type': 'Person', name: 'Rose Njeru' }, publisher: providerRef, ...(post.date ? { datePublished: post.date } : {}), ...(post.modified ? { dateModified: post.modified } : {}), ...((post.ogImage || post.cover) ? { image: post.ogImage || post.cover } : {}) },
           ...(faq.length ? [faqLd(faq)] : []),
         ]} />
       <main>
@@ -196,18 +201,20 @@ export default function BlogPost() {
           <Container className="relative py-10 sm:py-14">
             <div className="max-w-3xl">
               <Link to="/blog" className="inline-flex items-center gap-2 text-sm font-medium text-sand hover:text-cream"><FiArrowLeft aria-hidden /> All guides</Link>
-              <div className="mt-6"><Eyebrow dark>BLOG</Eyebrow></div>
+              <div className="mt-6"><Eyebrow dark>{post.tags?.[0] ? `BLOG · ${post.tags[0].toUpperCase()}` : 'BLOG'}</Eyebrow></div>
               <h1 id="post-h" className="text-2xl leading-[1.15] sm:text-4xl">{post.title}</h1>
               <p className="mt-4 text-base italic leading-relaxed text-cream/80 sm:text-lg">{post.excerpt}</p>
-              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru · {minutes(post)} min read</p>
+              <p className="mt-5 font-mono text-xs text-cream/60">By Rose Njeru · {post.date ? `${new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} · ` : ''}{minutes(post)} min read</p>
             </div>
           </Container>
         </section>
 
         <Section className="!pt-10 sm:!pt-12">
           <article className="mx-auto max-w-3xl">
-            {post.cover && <img src={post.cover} alt="" className="mb-8 aspect-[16/9] w-full rounded-3xl object-cover" />}
-            <Body blocks={blocks} images={post.images} />
+            {post.cover && <img src={post.cover} alt={post.coverAlt || ''} className="mb-8 aspect-[16/9] w-full rounded-3xl object-cover" />}
+            {fromSanity
+              ? <><PortableBody value={post.body} showContents={post.showContents} /><PostFaq items={post.faq} /></>
+              : <Body blocks={blocks} images={post.images} />}
           </article>
         </Section>
 

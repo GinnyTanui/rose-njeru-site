@@ -8,6 +8,8 @@ const setMeta = (attr, key, content) => {
 };
 
 /* Per-page title, description, canonical, Open Graph, Twitter and JSON-LD (@graph). */
+const abs = (p) => (/^https?:\/\//.test(p) ? p : SITE.url + p);
+
 export function Seo({ title, description, path = '/', jsonLd = [], noindex = false, image = '/og-default.png' }) {
   useEffect(() => {
     const url = SITE.url + path;
@@ -19,8 +21,8 @@ export function Seo({ title, description, path = '/', jsonLd = [], noindex = fal
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', url);
-    setMeta('property', 'og:image', SITE.url + image);
-    setMeta('name', 'twitter:image', SITE.url + image);
+    setMeta('property', 'og:image', abs(image));
+    setMeta('name', 'twitter:image', abs(image));
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
@@ -32,7 +34,7 @@ export function Seo({ title, description, path = '/', jsonLd = [], noindex = fal
     s.text = JSON.stringify({ '@context': 'https://schema.org', '@graph': jsonLd });
     document.head.appendChild(s);
     return () => s.remove();
-  }, [title, description, path, noindex]); // eslint-disable-line
+  }, [title, description, path, noindex, image]); // eslint-disable-line
   return null;
 }
 
